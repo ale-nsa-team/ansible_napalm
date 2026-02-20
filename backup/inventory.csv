@@ -1,0 +1,6 @@
+OS,host,username,password
+eos,Leaf2,admin,switch
+eos,Leaf1,admin,switch
+eos,Spine1,admin,switch
+aos,Spine2,admin,switch
+aos,Leaf3,admin,switch

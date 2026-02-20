@@ -1,0 +1,99 @@
+! Chassis:
+system name "Leaf3"
+
+! Configuration:
+configuration error-file-limit 2
+
+! Capability Manager:
+hash-control extended
+
+! Multi-Chassis:
+! Virtual Flow Control:
+! LFP:
+! Interface:
+! Port_Manager:
+! Link Aggregate:
+! VLAN:
+vlan 1 admin-state enable
+
+! PVLAN:
+! Spanning Tree:
+spantree mode flat
+spantree vlan 1 admin-state enable
+! DA-UNP:
+! Bridging:
+! Port Mirroring:
+! Port Mapping:
+! IP:
+! IPv6:
+! IPSec:
+! IPMS:
+! AAA:
+aaa authentication default "local"
+aaa authentication console "local"
+aaa authentication ssh "local"
+
+aaa tacacs command-authorization disable
+
+! NTP:
+! QOS:
+! Policy Manager:
+! VLAN Stacking:
+! ERP:
+! MVRP:
+! LLDP:
+! UDLD:
+! Server Load Balance:
+! High Availability Vlan:
+! Session Manager:
+session cli timeout 100
+session prompt default "Leaf3>"
+
+! Web:
+! Trap Manager:
+! Health Monitor:
+! System Service:
+! SNMP:
+! BFD:
+! IP Route Manager:
+! VRRP:
+! UDP Relay:
+! RIP:
+! OSPF:
+! IP Multicast:
+! DVMRP:
+! IPMR:
+! RIPng:
+! OSPF3:
+! BGP:
+! ISIS:
+! Netsec:
+! Module:
+! LAN Power:
+! RDP:
+! DHL:
+! Ethernet-OAM:
+! SAA:
+! SPB-ISIS:
+! SVCMGR:
+service stats disable
+
+! LDP:
+! EVB:
+! APP-FINGERPRINT:
+! FCOE:
+! QMR:
+! OPENFLOW:
+! Dynamic auto-fabric:
+! SIP Snooping:
+! DHCP Server:
+! DHCPv6 Relay:
+! DHCPv6 Server:
+! DHCP Message Service:
+! DHCP Active Lease Service:
+! Virtual Chassis Split Protection:
+! DHCP Snooping:
+! APP-MONITORING:
+! Loopback Detection:
+! VM-SNOOPING:
+! PPPOE-IA:

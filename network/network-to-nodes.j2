@@ -1,0 +1,69 @@
+#
+# Nodes in the network
+#
+{% macro core_link(name,ip,cost,vlan,remote) %}
+{{name}}: { ip: {{ip}}, remote: {{remote}} {% if cost %}, cost: {{cost}}{% endif %} {% if vlan %}, vlan: {{vlan}}{% endif %}}{% endmacro %}
+
+---
+
+common:
+    bgp_asn: {{ common.bgp_asn }}
+
+nodes:
+{% for node in nodes %}
+
+  {{ node.name }}:
+    mgmt: {{ node.mgmt }}
+    rid:  {{ node.rid }}
+    links:
+{%   for link in links %}
+{%     if link.left == node.name %}
+      {{ core_link(link.left_port,link.left_ip,link.cost|default(''),link.vlan|default('0'),link.right) }}
+{%     elif link.right == node.name %}
+      {{ core_link(link.right_port,link.right_ip, link.cost|default(''),link.vlan|default('0'),link.left) }}
+{%     endif %}
+{%   endfor %}
+{%  if bgp is defined %}
+    bgp:
+       ibgp:
+{%       if node.name in bgp.rr  %}
+         rr: true
+         peers:
+{%          for peer in bgp.rr %}
+{%            if node.name != peer  %}
+{%              for other_node in nodes %}
+{%                if other_node.name == peer %}
+            -  {{ other_node.rid }}
+{%                endif %}
+{%              endfor  %}
+{%       endif %}
+{%          endfor %}
+         clients:
+{%          for peer in bgp.clients %}
+{%            for other_node in nodes %}
+{%              if other_node.name == peer %}
+            -  {{ other_node.rid }}
+{%              endif %}
+{%            endfor  %}
+{%          endfor %}
+{%       else %}
+         peers:
+{%          for peer in bgp.rr %}
+{%            for other_node in nodes %}
+{%              if other_node.name == peer %}
+            -  {{ other_node.rid }}
+{%              endif %}
+{%            endfor  %}
+{%          endfor %}
+{%       endif %}
+         af:
+{%          for af in bgp.af %}
+            - {{ af }}
+{%          endfor %}
+{%  endif %}
+{%   if ospf is defined %}
+    ospf:
+        area: {{ospf.area}}
+        network: {{ospf.network}}
+{%   endif %}
+{% endfor %}
