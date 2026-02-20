@@ -14,7 +14,7 @@ It includes example folders, configuration files, and a Docker-based all-in-one 
 - (Optional) Git
 
 ⚠️ **Important:**  
-You must have a properly configured DNS **or** manually populate `/etc/hosts` to resolve device names.
+You must have a properly configured DNS or manually populate `/etc/hosts` to resolve device names.
 
 ---
 
@@ -90,7 +90,4 @@ docker run -it --name yourname alenterprise/ansible /bin/bash
 ---
 
 ## Notes
-
-- The Docker container has been uploaded to **Docker Hub**
-- Ensure device hostnames resolve correctly (DNS or `/etc/hosts`)
 - This environment is intended for demo and learning purposes
