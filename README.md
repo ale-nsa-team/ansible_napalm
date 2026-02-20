@@ -1,6 +1,6 @@
 # Ansible & NAPALM Installation
 
-This repository provides a demo environment for using **Ansible** with **NAPALM** to manage network devices.  
+This repository provides a demo environment for using **Ansible** with **NAPALM** to manage Alcatel-Lucent Enterprise OmniSwitch.  
 It includes example folders, configuration files, and a Docker-based all-in-one setup.
 
 ---
